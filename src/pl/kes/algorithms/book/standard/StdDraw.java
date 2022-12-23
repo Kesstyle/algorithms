@@ -212,7 +212,7 @@ import javax.swing.KeyStroke;
  *  <p>
  *  The first method allows you to specify colors using the RGB color system.
  *  This <a href = "http://johndyer.name/lab/colorpicker/">color picker</a>
- *  is a convenient way to find a desired color.
+ *  is a convenient way to search a desired color.
  *  <p>
  *  The second method allows you to specify colors using the
  *  {@link Color} data type, which is defined in Java's {@link java.awt} pacakge.

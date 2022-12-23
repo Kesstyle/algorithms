@@ -1,5 +1,9 @@
 package pl.kes.algorithms.book.chapter5;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class DFA {
 
   private int[][] dfa;
@@ -19,6 +23,32 @@ public class DFA {
       return i - M;
     }
     return N;
+  }
+
+  public Collection<Integer> searchAll(String txt) {
+    int i, j, N = txt.length();
+    List<Integer> result = new ArrayList<>();
+    int x = 0;
+    for (i = 0, j = 0; i < N; i++) {
+      if (j >= M) {
+        // found one, reset
+        result.add(i - M);
+        j = x;
+        x--;
+      }
+      if (j == 0) {
+        x = 0;
+      } else if (j == 1) {
+        x = dfa[index(txt.charAt(i))][0];
+      } else {
+        x = dfa[index(txt.charAt(i))][x];
+      }
+      j = dfa[index(txt.charAt(i))][j];
+    }
+    if (j == M) {
+      result.add(N - M);
+    }
+    return result;
   }
 
   private void createDfa(String pat) {

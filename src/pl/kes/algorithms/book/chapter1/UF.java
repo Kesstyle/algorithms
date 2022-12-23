@@ -26,13 +26,13 @@ import pl.kes.algorithms.book.standard.StdIn;
 import pl.kes.algorithms.book.standard.StdOut;
 
 /**
- *  The {@code UF} class represents a <em>union–find data type</em>
+ *  The {@code UF} class represents a <em>union–search data type</em>
  *  (also known as the <em>disjoint-sets data type</em>).
- *  It supports the classic <em>union</em> and <em>find</em> operations,
+ *  It supports the classic <em>union</em> and <em>search</em> operations,
  *  along with a <em>count</em> operation that returns the total number
  *  of sets.
  *  <p>
- *  The union–find data type models a collection of sets containing
+ *  The union–search data type models a collection of sets containing
  *  <em>n</em> elements, with each element in exactly one set.
  *  The elements are named 0 through <em>n</em>–1.
  *  Initially, there are <em>n</em> sets, with each element in its
@@ -42,8 +42,8 @@ import pl.kes.algorithms.book.standard.StdOut;
  *  is one distinguished element in the set. Here is a summary of
  *  the operations:
  *  <ul>
- *  <li><em>find</em>(<em>p</em>) returns the canonical element
- *      of the set containing <em>p</em>. The <em>find</em> operation
+ *  <li><em>search</em>(<em>p</em>) returns the canonical element
+ *      of the set containing <em>p</em>. The <em>search</em> operation
  *      returns the same value for two elements if and only if
  *      they are in the same set.
  *  <li><em>union</em>(<em>p</em>, <em>q</em>) merges the set
@@ -56,17 +56,17 @@ import pl.kes.algorithms.book.standard.StdOut;
  *  <p>
  *  The canonical element of a set can change only when the set
  *  itself changes during a call to <em>union</em>&mdash;it cannot
- *  change during a call to either <em>find</em> or <em>count</em>.
+ *  change during a call to either <em>search</em> or <em>count</em>.
  *  <p>
  *  This implementation uses <em>weighted quick union by rank</em>
  *  with <em>path compression by halving</em>.
  *  The constructor takes &Theta;(<em>n</em>) time, where
  *  <em>n</em> is the number of elements.
- *  The <em>union</em> and <em>find</em> operations take
+ *  The <em>union</em> and <em>search</em> operations take
  *  &Theta;(log <em>n</em>) time in the worst case.
  *  The <em>count</em> operation takes &Theta;(1) time.
  *  Moreover, starting from an empty data structure with <em>n</em> sites,
- *  any intermixed sequence of <em>m</em> <em>union</em> and <em>find</em>
+ *  any intermixed sequence of <em>m</em> <em>union</em> and <em>search</em>
  *  operations takes <em>O</em>(<em>m</em> &alpha;(<em>n</em>)) time,
  *  where &alpha;(<em>n</em>) is the inverse of
  *  <a href = "https://en.wikipedia.org/wiki/Ackermann_function#Inverse">Ackermann's function</a>.
@@ -88,7 +88,7 @@ public class UF {
     private int count;     // number of components
 
     /**
-     * Initializes an empty union-find data structure with
+     * Initializes an empty union-search data structure with
      * {@code n} elements {@code 0} through {@code n-1}.
      * Initially, each element is in its own set.
      *

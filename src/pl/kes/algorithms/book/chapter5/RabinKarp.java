@@ -1,5 +1,9 @@
 package pl.kes.algorithms.book.chapter5;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 public class RabinKarp {
 
   private static final int R = 'z' - 'a' + 1;
@@ -27,11 +31,32 @@ public class RabinKarp {
     for (int i = M; i < N; i++) {
       hash = (hash + Q - (RM * index(s.charAt(i - M))) % Q ) % Q;
       hash = (R * hash + index(s.charAt(i))) % Q;
-      if (hash == hashPattern && verifyMatch(s.substring(i - M + 1, i + 1))) {
+      if (hash == hashPattern ) {
         return i - M + 1;
       }
     }
     return N;
+  }
+
+  public Collection<Integer> searchAll(String s) {
+    int N = s.length();
+    int hash = hash(s.substring(0, M));
+    List<Integer> res = new ArrayList<>();
+    if (hash == hashPattern) {
+      res.add(0);
+    }
+    int RM = 1;
+    for (int i = 0; i < M - 1; i++) {
+      RM = (RM * R) % Q;
+    }
+    for (int i = M; i < N; i++) {
+      hash = (hash + Q - (RM * index(s.charAt(i - M))) % Q) % Q;
+      hash = (R * hash + index(s.charAt(i))) % Q;
+      if (hash == hashPattern) {
+        res.add(i - M + 1);
+      }
+    }
+    return res;
   }
 
   private boolean verifyMatch(String s) {

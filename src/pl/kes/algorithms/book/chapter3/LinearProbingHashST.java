@@ -203,7 +203,7 @@ public class LinearProbingHashST<Key, Value> {
         return;
       }
 
-        // find position i of key
+        // search position i of key
         int i = hash(key);
         while (!key.equals(keys[i])) {
             i = (i + 1) % m;

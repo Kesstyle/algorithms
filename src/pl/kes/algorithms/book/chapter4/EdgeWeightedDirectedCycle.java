@@ -182,7 +182,7 @@
 //
 //        StdOut.println(G);
 //
-//        // find a directed cycle
+//        // search a directed cycle
 //        EdgeWeightedDirectedCycle finder = new EdgeWeightedDirectedCycle(G);
 //        if (finder.hasCycle()) {
 //            StdOut.print("Cycle: ");
