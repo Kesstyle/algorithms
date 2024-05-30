@@ -31,10 +31,22 @@ public class DirectedDFSKes {
     return res;
   }
 
+  public Iterable<Integer> allMarked() {
+    List<Integer> res = new ArrayList<>();
+    for (int i = 0; i < marked.length; i++) {
+      if (marked[i]) {
+        res.add(i);
+      }
+    }
+    return res;
+  }
+
   private void dfs(Digraph g, int v) {
     marked[v] = true;
     for (Integer w: g.adj(v)) {
-      dfs(g, w);
+      if (!marked[w]) {
+        dfs(g, w);
+      }
     }
   }
 }
